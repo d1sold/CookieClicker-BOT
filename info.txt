@@ -1,5 +1,5 @@
 {
-	"Name": "Cookie Bot",
+	"Name": "CookieClicker-BOT",
 	"ID": "cookie bot",
 	"Author": "d1sold",
 	"Description": "Autoclicker + golden cookies + auto-buy. Shift+B toggles the bot.",

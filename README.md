@@ -2,9 +2,9 @@
 
 **Русский** · [English](README.en.md)
 
-<img src="docs/clawd.gif" alt="Clawd катит печеньку по панели" width="720">
+<img src="docs/clawd.gif" alt="CookieClicker-BOT: Clawd катит печеньку по панели" width="720">
 
-# Cookie Bot
+# CookieClicker-BOT
 
 **Бот, который сам играет в Cookie Clicker из Steam в фоне, и терминальная панель, через которую за ним можно подглядывать.**
 
@@ -92,7 +92,7 @@
 ```mermaid
 flowchart LR
     subgraph Steam["Steam · Proton"]
-        G["Cookie Clicker<br/>(скрытое окно)"] --- M["мод Cookie Bot<br/>main.js"]
+        G["Cookie Clicker<br/>(скрытое окно)"] --- M["мод CookieClicker-BOT<br/>main.js"]
     end
     M -- "снимок каждые 0.5 с" --> A["агент<br/>127.0.0.1:17777"]
     A -- "команды в очереди" --> M
@@ -113,16 +113,16 @@ Linux со Steam и Proton, Python 3 (только стандартная биб
 ```sh
 # 1. положить мод туда, где игра ищет локальные моды
 cd "$HOME/.local/share/Steam/steamapps/common/Cookie Clicker/resources/app/mods/local"
-git clone https://github.com/d1sold/cookie-bot.git cookieBot
+git clone https://github.com/d1sold/CookieClicker-BOT.git
 
 # 2. пропатчить start.js и поставить команду CookieClicker (игру сначала закрыть)
-./cookieBot/install.sh
+./CookieClicker-BOT/install.sh
 
 # 3. поехали
 CookieClicker
 ```
 
-Если мод не включился сам, один раз включи **Cookie Bot** в игре: *Options → Mods*. После обновления игры в Steam или «Проверки целостности файлов» запусти `install.sh` ещё раз.
+Если мод не включился сам, один раз включи **CookieClicker-BOT** в игре: *Options → Mods*. После обновления игры в Steam или «Проверки целостности файлов» запусти `install.sh` ещё раз.
 
 ## Как пользоваться
 

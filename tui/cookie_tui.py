@@ -555,7 +555,7 @@ class Panel:
 
         # header: dot, name, tabs, status
         self.put(0, 1, "●" if live else "○", p.amber if live else p.t3)
-        x = 3 + self.put(0, 3, "cookie bot", p.t1 | curses.A_BOLD) + 3
+        x = 3 + self.put(0, 3, "cookieclicker-bot", p.t1 | curses.A_BOLD) + 3
         for i, name in enumerate(TABS):
             act = i == self.tab
             x += self.put(0, x, str(i + 1), p.amber if act else p.t3)
@@ -565,7 +565,11 @@ class Panel:
             right.append(("bot on", p.t1) if s.get("enabled") else ("bot off", p.bad))
             right.append(("hidden", p.t2) if (s.get("window") or {}).get("hidden") else ("shown", p.t2))
         right.append((time.strftime("%H:%M"), p.t3))
-        rx = W - 2 - (sum(len(t) for t, _ in right) + 3 * (len(right) - 1))
+        def need(items):
+            return sum(len(t) for t, _ in items) + 3 * (len(items) - 1)
+        while len(right) > 1 and W - 2 - need(right) <= x:   # narrow: drop the clock, then window state
+            right.pop()
+        rx = W - 2 - need(right)
         if rx > x:
             for i, (t, a) in enumerate(right):
                 if i:
@@ -1452,7 +1456,7 @@ def print_status(s, agent):
     win = s.get("window") or {}
     bits = [c("t1", "bot on") if s.get("enabled") else c("bad", "bot off"),
             c("t2", "window hidden" if win.get("hidden") else "window shown")]
-    print(c("amber", "●") + " " + c("t1", "cookie bot") + "  " + c("t3", f"{s.get('name', '')} bakery") +
+    print(c("amber", "●") + " " + c("t1", "cookieclicker-bot") + "  " + c("t3", f"{s.get('name', '')} bakery") +
           "  " + c("t3", " · ").join(bits))
     rows = [("cookies", num(s["cookies"])), ("income", num(s["income"]) + "/s"),
             ("made by bot", num(s.get("botEarned")))]

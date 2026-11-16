@@ -2,9 +2,9 @@
 
 [Русский](README.md) · **English**
 
-<img src="docs/clawd.gif" alt="Clawd pushing a cookie across the panel" width="720">
+<img src="docs/clawd.gif" alt="CookieClicker-BOT: Clawd pushing a cookie across the panel" width="720">
 
-# Cookie Bot
+# CookieClicker-BOT
 
 **A bot that plays Steam Cookie Clicker in the background and a terminal dashboard that lets you look in.**
 
@@ -92,7 +92,7 @@ The Claude Code mascot lives above the footer and puts on a costume on every tab
 ```mermaid
 flowchart LR
     subgraph Steam["Steam · Proton"]
-        G["Cookie Clicker<br/>(hidden window)"] --- M["Cookie Bot mod<br/>main.js"]
+        G["Cookie Clicker<br/>(hidden window)"] --- M["CookieClicker-BOT mod<br/>main.js"]
     end
     M -- "snapshot every 0.5 s" --> A["agent<br/>127.0.0.1:17777"]
     A -- "queued commands" --> M
@@ -113,16 +113,16 @@ Linux with Steam and Proton, Python 3 (standard library only).
 ```sh
 # 1. put the mod where the game looks for local mods
 cd "$HOME/.local/share/Steam/steamapps/common/Cookie Clicker/resources/app/mods/local"
-git clone https://github.com/d1sold/cookie-bot.git cookieBot
+git clone https://github.com/d1sold/CookieClicker-BOT.git
 
 # 2. patch start.js and install the CookieClicker command (close the game first)
-./cookieBot/install.sh
+./CookieClicker-BOT/install.sh
 
 # 3. go
 CookieClicker
 ```
 
-Enable **Cookie Bot** once in the game's *Options → Mods* if it isn't already on. After a Steam update or *Verify integrity*, run `install.sh` again.
+Enable **CookieClicker-BOT** once in the game's *Options → Mods* if it isn't already on. After a Steam update or *Verify integrity*, run `install.sh` again.
 
 ## Use
 
