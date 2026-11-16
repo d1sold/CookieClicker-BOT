@@ -110,7 +110,7 @@ Linux with Steam and Proton, Python 3 (standard library only).
 ```sh
 # 1. put the mod where the game looks for local mods
 cd "$HOME/.local/share/Steam/steamapps/common/Cookie Clicker/resources/app/mods/local"
-git clone <this repo> cookieBot
+git clone https://github.com/d1sold/cookie-bot.git cookieBot
 
 # 2. patch start.js and install the CookieClicker command (close the game first)
 ./cookieBot/install.sh
