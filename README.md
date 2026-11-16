@@ -1,182 +1,184 @@
 <div align="center">
 
-<img src="docs/clawd.gif" alt="Clawd pushing a cookie across the panel" width="720">
+**Русский** · [English](README.en.md)
+
+<img src="docs/clawd.gif" alt="Clawd катит печеньку по панели" width="720">
 
 # Cookie Bot
 
-**A bot that plays Steam Cookie Clicker in the background and a terminal dashboard that lets you look in.**
+**Бот, который сам играет в Cookie Clicker из Steam в фоне, и терминальная панель, через которую за ним можно подглядывать.**
 
-The real game keeps running, hidden, so Steam keeps counting hours and achievements.<br>
-You can open the panel, check how things are going, and close it again: the bot keeps playing.
+Настоящая игра продолжает работать в скрытом окне, поэтому Steam считает часы и выдаёт ачивки.<br>
+Открыл панель, посмотрел, как дела, закрыл. Бот продолжает играть.
 
 ![Linux](https://img.shields.io/badge/Linux-Steam%20%2B%20Proton-141415?style=flat-square&labelColor=0f0f10)
-![Python](https://img.shields.io/badge/panel-Python%203%20·%20curses-141415?style=flat-square&labelColor=0f0f10)
-![Mod](https://img.shields.io/badge/mod-JavaScript-141415?style=flat-square&labelColor=0f0f10)
-![No deps](https://img.shields.io/badge/dependencies-none-f5a524?style=flat-square&labelColor=0f0f10)
-![MIT](https://img.shields.io/badge/license-MIT-141415?style=flat-square&labelColor=0f0f10)
+![Python](https://img.shields.io/badge/панель-Python%203%20·%20curses-141415?style=flat-square&labelColor=0f0f10)
+![Mod](https://img.shields.io/badge/мод-JavaScript-141415?style=flat-square&labelColor=0f0f10)
+![No deps](https://img.shields.io/badge/зависимости-нет-f5a524?style=flat-square&labelColor=0f0f10)
+![MIT](https://img.shields.io/badge/лицензия-MIT-141415?style=flat-square&labelColor=0f0f10)
 
 </div>
 
 <br>
 
-<img src="docs/overview.png" alt="Overview tab: stats, strategy, next purchase, buildings, income chart, Clawd">
+<img src="docs/overview.png" alt="Вкладка обзора: показатели, стратегия, следующая покупка, здания, график дохода, Clawd">
 
-## What it does
+## Что он умеет
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🍪 Plays the game
-- Clicks 20 times a second, 50 during combos
-- Pops golden cookies and reindeer, clicks fortunes
-- Picks every purchase by its **real** CpS gain, computed with the game's own formulas
-- Keeps a lucky bank for golden-cookie payouts
-- Buys cheaper things while saving for a big one, if they pay off sooner
+### 🍪 Играет
+- Кликает 20 раз в секунду, во время комбо 50
+- Ловит золотые печеньки и оленей, кликает предсказания в новостях
+- Каждую покупку выбирает по **реальному** приросту дохода, который пересчитывает формулами самой игры
+- Держит Lucky-банк под выплаты золотых печенек
+- Пока копит на дорогую покупку, берёт то, что окупится раньше
 
 </td>
 <td width="50%" valign="top">
 
-### 🔮 Knows the minigames
-- **Grimoire:** reads the seeded *Force the Hand of Fate* outcome (40/40 exact) and saves click frenzies for a Frenzy
-- **Stock market:** buys low, sells high, hires brokers
-- **Pantheon, garden, dragon, sugar lumps:** sensible defaults, all automatic
+### 🔮 Разбирается в мини-играх
+- **Гримуар:** читает заранее заданный сидом исход «Руки судьбы» (совпало 40 из 40) и придерживает Click frenzy до Frenzy
+- **Биржа:** покупает дёшево, продаёт дорого, нанимает брокеров
+- **Пантеон, сад, дракон, сахарные кубики:** разумные настройки, всё само
 
 </td>
 </tr>
 <tr>
 <td valign="top">
 
-### ✨ Ascends at the right time
-- Ascends when chip growth drops below the run's average (the marginal-value rule)
-- Buys heavenly upgrades in a fixed order and pulls in missing parents
-- Pops wrinklers first, waits for a running combo to end
-- Refuses a reset that would earn 0 chips, in three places
+### ✨ Возносится вовремя
+- Возносится, когда небесные фишки начинают прибывать медленнее, чем в среднем за забег (правило предельной ценности)
+- Покупает небесные апгрейды в заданном порядке и сам подтягивает недостающих «родителей» в дереве
+- Перед вознесением лопает морщинников и ждёт конца комбо
+- Не даёт вознестись за 0 фишек: защита стоит в трёх местах
 
 </td>
 <td valign="top">
 
-### 🛡️ Runs unattended
-- Background agent with a 7-day history
-- Watchdog relaunches the game if it crashes
-- Desktop notifications: ready to ascend, ascending, relaunching
-- Steam hours and achievements keep counting
+### 🛡️ Работает без присмотра
+- Фоновый агент хранит историю за 7 дней
+- Если игра упала, watchdog запускает её заново
+- Уведомления на рабочий стол: «можно возноситься», «вознесение», «перезапуск игры»
+- Часы и ачивки в Steam продолжают идти
 
 </td>
 </tr>
 </table>
 
-## The panel
+## Панель
 
-Six tabs in the style of the **DASH** theme: graphite, lowercase titles, amber only on what's active.
+Шесть вкладок в стиле темы **DASH**: графит, подписи строчными, янтарь только на активном.
 
 | | |
 |:---:|:---:|
-| <img src="docs/market.png" alt="Market tab"> | <img src="docs/minigames.png" alt="Minigames tab"> |
-| **market:** gauge against resting value, P/L, sparklines | **minigames:** next spell outcomes, pantheon, garden grid, heaven plan |
-| <img src="docs/charts.png" alt="Charts tab"> | <img src="docs/settings.png" alt="Settings tab"> |
-| **charts:** income (log), chips, activity bars, CpS split, doubling time | **settings:** every module, arrows + space |
+| <img src="docs/market.png" alt="Вкладка биржи"> | <img src="docs/minigames.png" alt="Вкладка мини-игр"> |
+| **market:** цена относительно нормы, прибыль и убыток, мини-графики | **minigames:** следующие исходы заклинаний, Пантеон, сетка сада, план на небе |
+| <img src="docs/charts.png" alt="Вкладка графиков"> | <img src="docs/settings.png" alt="Вкладка настроек"> |
+| **charts:** доход (лог-шкала), фишки, столбики активности, доли зданий, время удвоения | **settings:** все модули, стрелки и пробел |
 
-### Meet Clawd
+### Знакомьтесь, Clawd
 
-The Claude Code mascot lives above the footer and puts on a costume on every tab. He follows the bot's real events: he hops on purchases, cheers on golden cookies and spells, sprints during combos and naps when the bot is off.
+Маскот Claude Code живёт над нижней строкой панели и на каждой вкладке переодевается. Он реагирует на настоящие события бота: подпрыгивает при покупках, поднимает руки на золотых печеньках и заклинаниях, носится во время комбо и спит, когда бот выключен.
 
 <div align="center">
-<img src="docs/costumes.png" alt="Clawd's costumes: chef, trader, wizard, analyst, painter, mechanic" width="720">
+<img src="docs/costumes.png" alt="Костюмы Clawd: шеф, трейдер, волшебник, аналитик, художник, механик" width="720">
 </div>
 
-## How it works
+## Как это устроено
 
 ```mermaid
 flowchart LR
     subgraph Steam["Steam · Proton"]
-        G["Cookie Clicker<br/>(hidden window)"] --- M["Cookie Bot mod<br/>main.js"]
+        G["Cookie Clicker<br/>(скрытое окно)"] --- M["мод Cookie Bot<br/>main.js"]
     end
-    M -- "snapshot every 0.5 s" --> A["agent<br/>127.0.0.1:17777"]
-    A -- "queued commands" --> M
-    A --- D[("history.jsonl<br/>7 days")]
-    P["CookieClicker panel"] -- "state · history · cmd" --> A
+    M -- "снимок каждые 0.5 с" --> A["агент<br/>127.0.0.1:17777"]
+    A -- "команды в очереди" --> M
+    A --- D[("history.jsonl<br/>7 дней")]
+    P["панель CookieClicker"] -- "состояние · история · команды" --> A
     A -. "watchdog / notify-send" .-> Steam
 ```
 
-- **The mod** runs inside the game and does all the playing. It talks to the outside world over plain HTTP to `127.0.0.1`.
-- **The agent** is a small Python process. It holds the link, stores history, sticks to one game instance (Steam beats a browser copy) and relaunches the game if it disappears.
-- **The panel** is a curses client. Closing it, even with the terminal's close button, never touches the game.
-- **`start.js` patch:** two small changes to the game's Electron entry point, applied by `install.sh` and reversible. Timers keep full speed while the window is hidden, and the mod can hide or show the window.
+- **Мод** работает внутри игры и делает всю игру. С внешним миром говорит по обычному HTTP на `127.0.0.1`.
+- **Агент** — маленький процесс на Python. Держит связь, хранит историю, держится за одну копию игры (Steam важнее браузерной) и перезапускает игру, если та пропала.
+- **Панель** — клиент на curses. Её закрытие, даже крестиком терминала, игру не трогает.
+- **Патч `start.js`:** две маленькие правки во входной точке Electron-игры, ставятся `install.sh` и откатываются. Таймеры не замедляются, пока окно скрыто, а мод может прятать и показывать окно.
 
-## Install
+## Установка
 
-Linux with Steam and Proton, Python 3 (standard library only).
+Linux со Steam и Proton, Python 3 (только стандартная библиотека).
 
 ```sh
-# 1. put the mod where the game looks for local mods
+# 1. положить мод туда, где игра ищет локальные моды
 cd "$HOME/.local/share/Steam/steamapps/common/Cookie Clicker/resources/app/mods/local"
 git clone https://github.com/d1sold/cookie-bot.git cookieBot
 
-# 2. patch start.js and install the CookieClicker command (close the game first)
+# 2. пропатчить start.js и поставить команду CookieClicker (игру сначала закрыть)
 ./cookieBot/install.sh
 
-# 3. go
+# 3. поехали
 CookieClicker
 ```
 
-Enable **Cookie Bot** once in the game's *Options → Mods* if it isn't already on. After a Steam update or *Verify integrity*, run `install.sh` again.
+Если мод не включился сам, один раз включи **Cookie Bot** в игре: *Options → Mods*. После обновления игры в Steam или «Проверки целостности файлов» запусти `install.sh` ещё раз.
 
-## Use
+## Как пользоваться
 
 ```sh
-CookieClicker              # panel; starts the agent and the game if needed
-CookieClicker status       # one-screen summary, then exit
-CookieClicker show | hide  # game window
-CookieClicker save | quit  # quit = save and fully close (watchdog stands down)
+CookieClicker              # панель; сама запустит агента и игру
+CookieClicker status       # короткая сводка в терминал
+CookieClicker show | hide  # показать / скрыть окно игры
+CookieClicker save | quit  # quit = сохранить и полностью закрыть (watchdog отступает)
 CookieClicker agent stop
 ```
 
-| key | action | key | action |
+| клавиша | действие | клавиша | действие |
 |---|---|---|---|
-| `1`–`6` / `Tab` | switch tab | `w` | show / hide the game window |
-| `b` | bot on / off | `s` | save |
-| `A` `A` | ascend now | `Q` `Q` | close the game and exit |
-| `←` `→` | chart span | `q` / `Esc` | close the panel (game keeps going) |
+| `1`–`6` / `Tab` | вкладки | `w` | показать / скрыть окно игры |
+| `b` | бот вкл / выкл | `s` | сохранить |
+| `A` `A` | вознестись сейчас | `Q` `Q` | закрыть игру и выйти |
+| `←` `→` | период графиков | `q` / `Esc` | закрыть панель (игра работает дальше) |
 
-Keys work in the Russian layout too (й = q, Й = Q, …).
+Клавиши работают и в русской раскладке (й = q, Й = Q, …).
 
-## Measured, not guessed
+## Замерено, а не на глаз
 
-`sim/sim.js` runs the real game logic and the real bot on a virtual clock, 200–500× faster than real time, starting from a copy of your save. After one warm-up run, runs with the same seed repeat exactly.
+`sim/sim.js` гоняет настоящую логику игры и настоящего бота на виртуальных часах, в 200–500 раз быстрее реального времени, начиная с копии твоего сейва. После одного разогревочного прогона прогоны с одинаковым сидом повторяются в точности.
 
-| experiment | runs | result | verdict |
+| эксперимент | прогоны | результат | решение |
 |---|---|---|---|
-| lucky bank **off** vs **6000 s** | 20 seeds × 1 h | ×0.56 · 7 wins / 13 losses | keep the bank |
-| lucky bank **1500 s** vs **6000 s** | 20 seeds × 1 h | ×1.07 · t = 0.17 | no difference |
-| milk-aware buying | 20 seeds × 0.5 h, early + late save | ×0.98 · t = −1.5 | shipped **off** |
-| buy while saving | 1 pair × 400 game-min, fresh start | +1.9 % | shipped **on** |
+| Lucky-банк **выкл** против **6000 с** | 20 сидов × 1 ч | ×0.56 · 7 побед / 13 поражений | банк оставить |
+| Lucky-банк **1500 с** против **6000 с** | 20 сидов × 1 ч | ×1.07 · t = 0.17 | разницы нет |
+| учёт ачивок при покупках | 20 сидов × 0.5 ч, ранний и поздний сейв | ×0.98 · t = −1.5 | выключено |
+| покупки во время накопления | 1 пара × 400 игровых минут с нуля | +1.9 % | включено |
 
-Golden-cookie luck swings short runs by 10–50×, so every setting is judged over many seeds. The full log is in [`PLAN.md`](PLAN.md).
+Удача с золотыми печеньками раскачивает короткие прогоны в 10–50 раз, поэтому каждая настройка проверяется на многих сидах. Полный лог работы — в [`PLAN.md`](PLAN.md).
 
-## FAQ
+## Вопросы
 
-**Do Steam hours and achievements count?** Yes. The real game process runs under Steam and grants achievements through the game's own Steam integration.
+**Считаются ли часы и ачивки в Steam?** Да. Настоящий процесс игры работает под Steam и выдаёт ачивки через собственную интеграцию игры со Steam.
 
-**Is it a cheat?** It plays the game through the game's own functions: it never edits your cookies and never calls `Game.Win`. Two options peek at hidden state and are labelled: *see trends* (market) and *predict spells* (grimoire). Single-player only, so the only person affected is you.
+**Это чит?** Бот играет через функции самой игры: печеньки не редактирует и `Game.Win` не вызывает. Две опции подглядывают в скрытое состояние и так и подписаны: *see trends* (биржа) и *predict spells* (Гримуар). Игра одиночная, так что затрагивает это только тебя.
 
-**What does it change outside the mod folder?** The `start.js` patch (undo it with `python3 tui/patch_game.py --restore`), the `~/.local/bin/CookieClicker` command, and history in `~/.local/share/cookiebot/`.
+**Что меняется за пределами папки мода?** Патч `start.js` (откат: `python3 tui/patch_game.py --restore`), команда `~/.local/bin/CookieClicker` и история в `~/.local/share/cookiebot/`.
 
-**Windows?** Not yet. The game side would work, but the agent and panel assume Linux tools (`pgrep`, `steam`, `notify-send`).
+**А Windows?** Пока нет. Сторона игры заработала бы, но агент и панель рассчитаны на инструменты Linux (`pgrep`, `steam`, `notify-send`).
 
-## Layout
+## Что где лежит
 
 ```
-main.js, info.txt      the mod
-tui/cookie_agent.py    background agent
-tui/cookie_tui.py      CookieClicker panel + one-shot commands
-tui/patch_game.py      start.js patch / restore
-sim/sim.js             simulator
-install.sh             re-patch + command
-PLAN.md                work log, experiments, ideas
-docs/                  screenshots
+main.js, info.txt      мод
+tui/cookie_agent.py    фоновый агент
+tui/cookie_tui.py      панель CookieClicker и разовые команды
+tui/patch_game.py      патч / откат start.js
+sim/sim.js             симулятор
+install.sh             повторный патч и команда
+PLAN.md                лог работы, эксперименты, идеи
+docs/                  скриншоты
 ```
 
 ---
 
-<sub>MIT licensed, see [LICENSE](LICENSE). Fan project, not affiliated with Orteil / DashNet (Cookie Clicker) or Anthropic. Clawd appears as a tribute to the Claude Code mascot. Built together with Claude Code.</sub>
+<sub>Лицензия MIT, см. [LICENSE](LICENSE). Фан-проект, не связан с Orteil / DashNet (Cookie Clicker) и Anthropic. Clawd здесь как дань уважения маскоту Claude Code. Сделано вместе с Claude Code.</sub>
