@@ -13,6 +13,7 @@ You can open the panel, check how things are going, and close it again: the bot 
 ![Python](https://img.shields.io/badge/panel-Python%203%20·%20curses-141415?style=flat-square&labelColor=0f0f10)
 ![Mod](https://img.shields.io/badge/mod-JavaScript-141415?style=flat-square&labelColor=0f0f10)
 ![No deps](https://img.shields.io/badge/dependencies-none-f5a524?style=flat-square&labelColor=0f0f10)
+![MIT](https://img.shields.io/badge/license-MIT-141415?style=flat-square&labelColor=0f0f10)
 
 </div>
 
@@ -178,4 +179,4 @@ docs/                  screenshots
 
 ---
 
-<sub>Fan project, not affiliated with Orteil / DashNet (Cookie Clicker) or Anthropic. Clawd appears as a tribute to the Claude Code mascot. Built together with Claude Code.</sub>
+<sub>MIT licensed, see [LICENSE](LICENSE). Fan project, not affiliated with Orteil / DashNet (Cookie Clicker) or Anthropic. Clawd appears as a tribute to the Claude Code mascot. Built together with Claude Code.</sub>
