@@ -181,6 +181,9 @@ def num(x, d=1):
     while abs(x) >= 1000 and i < len(SUFFIX) - 1:
         x /= 1000
         i += 1
+    if round(abs(x), 3 - len(str(int(abs(x))))) >= 1000 and i < len(SUFFIX) - 1:
+        x /= 1000   # 999.96B rounds to 1000B: show it as 1T, not 1e+03B
+        i += 1
     return f"{x:.3g}{SUFFIX[i]}" if abs(x) < 1000 else f"{x:.2e}"
 
 
