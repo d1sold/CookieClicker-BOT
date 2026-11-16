@@ -1,0 +1,4 @@
+# game saves copied for the simulator: private, and large
+sim/*.cki
+__pycache__/
+*.pyc

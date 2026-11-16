@@ -1,0 +1,10 @@
+{
+	"Name": "Cookie Bot",
+	"ID": "cookie bot",
+	"Author": "d1sold",
+	"Description": "Autoclicker + golden cookies + auto-buy. Shift+B toggles the bot.",
+	"ModVersion": 1,
+	"GameVersion": 2.052,
+	"Date": "15/11/2026",
+	"Dependencies": []
+}
