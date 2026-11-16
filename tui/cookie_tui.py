@@ -1229,7 +1229,9 @@ class Panel:
             legs = "a"
         else:
             legs = ("b", "c")[(f // (1 if combo else 2)) % 2]
-        bob = 1 if scene == "settings" and at_spot and f % 6 < 3 else 0
+        bob = 0
+        if scene == "settings" and at_spot:   # hammering: arms swing up and down
+            cheer = f % 6 < 3
 
         # --- scene props behind him
         if scene == "market" and s and s.get("market"):
