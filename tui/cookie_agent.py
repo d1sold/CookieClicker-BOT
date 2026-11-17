@@ -35,6 +35,7 @@ KEEP = 7 * 86400           # history retention
 WATCH_EVERY = 30           # watchdog poll
 DEAD_AFTER = 120           # game missing this long -> relaunch
 RELAUNCH_GAP = 600         # at most one relaunch per 10 min
+HANG_AFTER = 600           # process alive but no snapshot for 10 min -> hung, restart
 
 
 def log(msg):
@@ -206,6 +207,24 @@ class Agent:
                     if self.missing_since is not None:
                         self.quit_requested = False
                     self.missing_since = None
+                    # Hung game: the process is there but the mod stopped talking
+                    # (seen: renderer crash loop, no saves). Kill and relaunch.
+                    silent = now - self.last if self.last else 0
+                    if (self.watchdog and not self.quit_requested and self.last and silent > HANG_AFTER
+                            and now - self.last_relaunch > RELAUNCH_GAP):
+                        self.last_relaunch = now
+                        self.relaunches += 1
+                        log("game silent for %ds while running, restarting" % silent)
+                        notify("Cookie Bot", "игра зависла — перезапускаю")
+                        subprocess.run(["pkill", "-TERM", "-f", r"Cookie Clicker\.exe"])
+                        for _ in range(20):
+                            time.sleep(1)
+                            if not game_running():
+                                break
+                        if game_running():
+                            subprocess.run(["pkill", "-KILL", "-f", r"Cookie Clicker\.exe"])
+                            time.sleep(2)
+                        launch_game()
                     continue
                 if self.missing_since is None:
                     self.missing_since = now
