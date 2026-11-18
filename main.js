@@ -512,7 +512,7 @@ Game.registerMod("cookie bot", {
 			// A reset that earns no heavenly chips only throws the run away.
 			if (CB.ascendNow && adv.gain < 1) { CB.ascendNow = false; note('ascension refused: +0 heavenly chips'); }
 			var wanted = CB.ascendNow || (CB.cfg.autoAscend && adv.ready);
-			if (!wanted) return;
+			if (!wanted) { ascending = 0; return; } // the rule changed its mind: start over next time
 			if (inCombo() || Game.shimmers.length) return; // never throw away a running combo
 			if (ascending === 0) {
 				// Popped wrinklers pay into "cookies baked", which is what prestige counts.
